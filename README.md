@@ -1,5 +1,11 @@
 # smtpcredtrap
-Simple Python tool to listen on SMTP ports and capture authentication attempts
+Simple Python tool to listen on SMTP ports and capture authentication attempts.
+
+During penetration tests, devices such as networked Multi Function Devices (MFDs) eg. printer/scanners are frequently compromised, often due to the default credentials not being changed by IT administrators. Some of these devices feature a "scan-to-email" function where an SMTP can be configured to send the scans via email.
+
+The web UI of the admin interface will typically not fetch or display the stored SMTP password after it has been set. To steal the plaintext password, the outgoing SMTP host could be changed to a host controlled by the penetration tester. A fake SMTP service could request authentication and capture the supplied credentials.
+
+This tool can be run on a host that the tester controls, to create a fake SMTP service that captures credentials. Ensure the host is reachable (on the internal network or on an internet-exposed server) from the compromised device, then change its SMTP host to the hostname or IP address of the smtpcredtrap host and press the "test SMTP connection" button or wait for a user to use the "scan to email" function and the device should send the saved SMTP credentials for the legitimate SMTP service to this listener. 
 
 ## Installation and Usage
 
